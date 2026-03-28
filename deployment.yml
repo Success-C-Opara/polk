@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frank-kube-deployment
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: frank-django
+  template:
+    metadata:
+      labels:
+        app: frank-django
+    spec:
+      containers:
+      - name: frank-django
+        image: successwise1/polk:latest
+        ports:
+        - containerPort: 8000
